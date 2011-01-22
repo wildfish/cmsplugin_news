@@ -6,8 +6,7 @@ import datetime
 
 from django.test import TestCase
 
-from cmsplugin_news.models import News
-from cmsplugin_news.navigation import get_nodes
+from models import News
 
 class NewsTest(TestCase):
     def setUp(self):
@@ -56,9 +55,3 @@ class NewsTest(TestCase):
         future_published.pub_date = self.tomorrow
         future_published.save()
         self.assertEquals(News.published.count(), 0)
-
-    def test_navigation(self):
-        """
-            Tests if the navigation build by navigation.get_nodes is correct
-        """
-        pass
