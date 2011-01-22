@@ -6,5 +6,5 @@ from cms.apphook_pool import apphook_pool
 class NewsApphook(CMSApp):
     name = _("Latest News")
     urls = ["cmsplugin_news.urls"]
-    
+
 apphook_pool.register(NewsApphook)

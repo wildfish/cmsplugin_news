@@ -14,19 +14,18 @@ news_info_month_dict = {
 }
 
 urlpatterns = patterns('django.views.generic.date_based',
-    (r'^$', 
+    (r'^$',
         'archive_index', news_info_dict, 'news_archive_index'),
-    
-    (r'^(?P<year>\d{4})/$', 
+
+    (r'^(?P<year>\d{4})/$',
         'archive_year', news_info_dict, 'news_archive_year'),
-    
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/$', 
+
+    (r'^(?P<year>\d{4})/(?P<month>\d{2})/$',
         'archive_month', news_info_month_dict, 'news_archive_month'),
-    
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 
+
+    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',
         'archive_day', news_info_month_dict, 'news_archive_day'),
-    
-    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$', 
+
+    (r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         'object_detail', news_info_month_dict, 'news_detail'),
 )
-

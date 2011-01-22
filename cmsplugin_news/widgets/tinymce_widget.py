@@ -12,11 +12,11 @@ from django.forms.widgets import flatatt
 import cms.plugins.text.settings
 
 class TinyMCEEditor(TinyMCE):
-    
+
     def __init__(self, installed_plugins=None,  **kwargs):
         super(TinyMCEEditor, self).__init__(**kwargs)
         self.installed_plugins = installed_plugins
-        
+
     def render_additions(self, name, value, attrs=None):
         language = get_language()
         context = {
@@ -27,7 +27,7 @@ class TinyMCEEditor(TinyMCE):
         }
         return mark_safe(render_to_string(
             'cmsplugin_news/widgets/tinymce.html', context))
-        
+
     def _media(self):
         media = super(TinyMCEEditor, self)._media()
         media.add_js([join(settings.CMS_MEDIA_URL, path) for path in (
@@ -35,12 +35,12 @@ class TinyMCEEditor(TinyMCE):
                       )])
         media.add_css({"all":[join(settings.CMS_MEDIA_URL, path) for path in ('css/jquery/cupertino/jquery-ui.css',
                                                                      'css/tinymce_toolbar.css')]})
-        
+
         return media
-    
-    
+
+
     media = property(_media)
-    
+
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         value = smart_unicode(value)
@@ -68,7 +68,7 @@ class TinyMCEEditor(TinyMCE):
         mce_config['theme_advanced_buttons1'] = adv2
         """
         json = simplejson.dumps(mce_config)
-        
+
         html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
@@ -82,6 +82,3 @@ class TinyMCEEditor(TinyMCE):
             html.append(u'<script type="text/javascript">tinyMCE_GZ.init(%s);</script>' % (c_json))
         html.append(u'<script type="text/javascript">%s;\ntinyMCE.init(%s);</script>' % (self.render_additions(name, value, attrs), json))
         return mark_safe(u'\n'.join(html))
-    
-    
-    

@@ -15,27 +15,27 @@ $(document).ready(function(){
         skinPath: "{{ CMS_MEDIA_URL }}js/wymeditor/skins/django/",
         updateSelector: 'input[type=submit],',
         updateEvent: 'click',
-		logoHtml: '',
-		toolsItems: [
-			    {{ WYM_TOOLS }}
-			],
-		containersItems: [
-		        {{ WYM_CONTAINERS }}
-		    ],
-		classesItems: [
-			    {{ WYM_CLASSES }}
-			],
-		editorStyles: [
-			{{ WYM_STYLES }}
-			],
-		{% if WYM_STYLESHEET %}
-		stylesheet:
-			{{ WYM_STYLESHEET }}
-		,
-		{% endif %}
+                logoHtml: '',
+                toolsItems: [
+                            {{ WYM_TOOLS }}
+                        ],
+                containersItems: [
+                        {{ WYM_CONTAINERS }}
+                    ],
+                classesItems: [
+                            {{ WYM_CLASSES }}
+                        ],
+                editorStyles: [
+                        {{ WYM_STYLES }}
+                        ],
+                {% if WYM_STYLESHEET %}
+                stylesheet:
+                        {{ WYM_STYLESHEET }}
+                ,
+                {% endif %}
         //handle click event on dialog's submit button
         postInitDialog: function( wym, wdw ) {
-     
+
         }
     });
 });

@@ -4,9 +4,9 @@ from django.db import models
 from cmsplugin_news.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'News'
         db.create_table('cmsplugin_news_news', (
             ('id', orm['cmsplugin_news.News:id']),
@@ -20,26 +20,26 @@ class Migration:
             ('updated', orm['cmsplugin_news.News:updated']),
         ))
         db.send_create_signal('cmsplugin_news', ['News'])
-        
+
         # Adding model 'LatestNewsPlugin'
         db.create_table('cmsplugin_latestnewsplugin', (
             ('cmsplugin_ptr', orm['cmsplugin_news.LatestNewsPlugin:cmsplugin_ptr']),
             ('limit', orm['cmsplugin_news.LatestNewsPlugin:limit']),
         ))
         db.send_create_signal('cmsplugin_news', ['LatestNewsPlugin'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'News'
         db.delete_table('cmsplugin_news_news')
-        
+
         # Deleting model 'LatestNewsPlugin'
         db.delete_table('cmsplugin_latestnewsplugin')
-        
-    
-    
+
+
+
     models = {
         'cms.cmsplugin': {
             'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
@@ -107,5 +107,5 @@ class Migration:
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         }
     }
-    
+
     complete_apps = ['cmsplugin_news']

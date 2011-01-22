@@ -14,11 +14,11 @@ class NewsTest(TestCase):
         self.today = datetime.datetime.today()
         self.yesterday = self.today - datetime.timedelta(days=1)
         self.tomorrow = self.today + datetime.timedelta(days=1)
-        
+
     def tearDown(self):
         pass
 
-        
+
     def test_unpublished(self):
         """
             Test if unpublished items are hidden by default
@@ -36,9 +36,9 @@ class NewsTest(TestCase):
         unpublished.is_published = False
         unpublished.save()
         self.assertEquals(News.published.count(), 0)
-        
+
         unpublished.delete()
-        
+
     def test_future_published(self):
         """
             Tests that items with a future published date are hidden
@@ -56,7 +56,7 @@ class NewsTest(TestCase):
         future_published.pub_date = self.tomorrow
         future_published.save()
         self.assertEquals(News.published.count(), 0)
-        
+
     def test_navigation(self):
         """
             Tests if the navigation build by navigation.get_nodes is correct

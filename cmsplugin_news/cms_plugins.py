@@ -13,8 +13,8 @@ class CMSLatestNewsPlugin(CMSPluginBase):
     model = LatestNewsPlugin
     name = _('Latest news')
     render_template = "cmsplugin_news/latest_news.html"
-    
-    
+
+
     def render(self, context, instance, placeholder):
         """
             Render the latest news

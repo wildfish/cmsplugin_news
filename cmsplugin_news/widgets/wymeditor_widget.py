@@ -15,7 +15,7 @@ class WYMEditor(Textarea):
             'wymeditor/jquery.wymeditor.js',
             'wymeditor/plugins/resizable/jquery.wymeditor.resizable.js',
         )]
-              
+
     def __init__(self, attrs=None, installed_plugins=None):
         """
         Create a widget for editing text + plugins.
@@ -27,7 +27,7 @@ class WYMEditor(Textarea):
             self.attrs.update(attrs)
         super(WYMEditor, self).__init__(attrs)
         self.installed_plugins = installed_plugins
-        
+
     def render_textarea(self, name, value, attrs=None):
         return super(WYMEditor, self).render(name, value, attrs)
 
