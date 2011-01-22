@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>News for {{ month }}</h1>
 
 <ul>
@@ -7,3 +10,4 @@
         <li>No news for this month</li>
     {% endfor %}
 </ul>
+{% endblock %}
