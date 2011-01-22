@@ -1,0 +1,13 @@
+*~
+*.orig
+*.pyc
+*.pyo
+*.rej
+*.log
+*.swp
+.DS_Store
+local_settings.py
+pip-log.txt
+build/
+dev.db
+reports/
