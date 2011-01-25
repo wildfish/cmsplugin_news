@@ -13,11 +13,12 @@ class NewsAdmin(admin.ModelAdmin):
         Admin for news
     """
     date_hierarchy = 'pub_date'
-    list_display = ('slug', 'title', 'is_published', 'pub_date')
+    list_display = ('slug', 'title', 'is_published', 'pub_date', 'author')
     #list_editable = ('title', 'is_published')
     list_filter = ('is_published', )
     search_fields = ['title', 'excerpt', 'content']
     prepopulated_fields = {'slug': ('title',)}
+    current_user_field = 'author' # will prepopulate this field when adding a new item
     form = NewsForm
 
     actions = ['make_published', 'make_unpublished']
@@ -30,7 +31,20 @@ class NewsAdmin(admin.ModelAdmin):
             Override to use the objects and not just the default visibles only.
         """
         return News.objects.all()
+ 
+    def add_view(self, request, form_url='', extra_context=None):
+        # set the current user so that we can prepopulate the author field
+        self._current_user = request.user
+        return super(NewsAdmin, self).add_view(request, form_url, extra_context)
 
+    def formfield_for_dbfield (self, db_field, **kwargs): 
+        field = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
+        # if we have a _current_user then preselect the currently logged in user
+        if hasattr(self, '_current_user') and db_field.name == self.current_user_field:
+            field.initial = self._current_user.pk 
+        return  field
+    
     def make_published(self, request, queryset):
         """
             Marks selected news items as published
