@@ -42,6 +42,9 @@ class News(models.Model):
         verbose_name = _('News')
         verbose_name_plural = _('News')
         ordering = ('-pub_date', )
+        permissions = (
+            ('can_publish', 'Can publish/unpublish news articles'),
+        )
 
     def __unicode__(self):
         return self.title

@@ -5,6 +5,7 @@ Tests for the cmsplugin_news app
 import datetime
 
 from django.test import TestCase
+from django.contrib.auth.models import Permission, User
 
 from models import News
 
@@ -55,3 +56,15 @@ class NewsTest(TestCase):
         future_published.pub_date = self.tomorrow
         future_published.save()
         self.assertEquals(News.published.count(), 0)
+
+    def test_publish_permissions(self):
+        """
+            Tests assigning of can_publish permission for superuser/non superuser users
+        """
+        superuser = User.objects.create(username='superman', is_staff=True, is_superuser=True)
+        averagepleb = User.objects.create(username='pleb', is_staff=True, is_superuser=False)
+
+        permission = 'news.can_publish'
+
+        self.assertTrue(superuser.has_perm(permission))
+        self.assertFalse(averagepleb.has_perm(permission))
