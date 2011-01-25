@@ -3,7 +3,11 @@
 {% block content %}
 <h1>{{ object.title }}</h1>
 
-<p><span class="date">{{ object.pub_date }}</span><br/>
+<p>
+    <span class="date">{{ object.pub_date }}</span><br/>
+{% if object.author %}
+    <span class="author">{{ object.author.get_full_name }}</span><br/>
+{% endif %}
     {{ object.content|safe }}
 </p>
 {% endblock %}
