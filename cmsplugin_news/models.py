@@ -1,9 +1,11 @@
 import datetime
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
+
 
 class PublishedNewsManager(models.Manager):
     """
@@ -22,6 +24,8 @@ class News(models.Model):
     title           = models.CharField(_('Title'), max_length=255)
     slug            = models.SlugField(_('Slug'), unique_for_date='pub_date',
                         help_text=_('A slug is a short name which uniquely identifies the news item for this day'))
+    author          = models.ForeignKey(User, blank=True, null=True)
+
     excerpt         = models.TextField(_('Excerpt'), blank=True)
     content         = models.TextField(_('Content'), blank=True)
 
