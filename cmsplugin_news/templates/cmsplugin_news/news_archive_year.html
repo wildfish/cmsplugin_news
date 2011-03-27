@@ -1,6 +1,3 @@
-{% extends "base.html" %}
-
-{% block content %}
 <h1>News for {{ year }}</h1>
 <ul>
     {% for date in date_list %}
@@ -9,4 +6,3 @@
         <li>No news for this year</li>
     {% endfor %}
 </ul>
-{% endblock %}
