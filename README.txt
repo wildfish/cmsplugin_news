@@ -1,6 +1,8 @@
 Name: cmsplugin-news
 Description: A news plugin for django-cms
 
+Forked from https://207.223.240.181/MrOxiMoron/cmsplugin-news
+
 Requirements:
 - django-cms-2.1.*
 
@@ -21,11 +23,12 @@ Todo and Tomaybes:
 - Allow comments on news (add option to the news model for it)
 - Optimize the navigation code, it works but there is probably a better way to do it.
 - Add RSS feed
-- Add optional author field
+x Add optional author field
 - Add optional end date to hide news again
-- Add Tags
-- Add translations (I can do the dutch one)
+- Add tags
+- Add translations
 - Ideas other people come up with :D
+x Add publishing permission
 
 Examples:
 
