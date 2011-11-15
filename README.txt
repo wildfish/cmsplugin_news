@@ -2,6 +2,7 @@ Name: cmsplugin-news
 Description: A news plugin for django-cms
 
 Forked from https://207.223.240.181/MrOxiMoron/cmsplugin-news
+Maintained by http://wildfish.com
 
 Requirements:
 - django-cms-2.1.*
